@@ -17,6 +17,17 @@ Install the plugin using the cordova command line utility:
 
 `$ cordova plugin add https://github.com/Viras-/cordova-plugin-powermanagement.git`
 
+Usage
+---------
+    successCB = function() {
+        alert('Success');
+    };
+    errorCB = function() {
+        alert('Error');
+    };
+    powerManagement.acquire(sucAlert, successCB); // awake the smartphone
+    powerManagement.release(sucAlert, errorCB); // allowed to sleep again
+
 License
 =======
 Copyright 2013 Wolfgang Koller
