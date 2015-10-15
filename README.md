@@ -28,6 +28,47 @@ Usage
     powerManagement.acquire(sucAlert, successCB); // awake the smartphone
     powerManagement.release(sucAlert, errorCB); // allowed to sleep again
 
+Usage
+-----
+
+### window.powerManagement.acquire(successCallback, failureCallback)
+Acquire a wakelock by calling this.
+
+	window.powerManagement.acquire(function() {
+		console.log('Wakelock acquired');
+	}, function() {
+		console.log('Failed to acquire wakelock');
+	});
+
+### window.powerManagement.dim(successCallback, failureCallback)
+This acquires a partial wakelock, allowing the screen to be dimmed.
+
+	window.powerManagement.dim(function() {
+		console.log('Wakelock acquired');
+	}, function() {
+		console.log('Failed to acquire wakelock');
+	});
+
+### window.powerManagement.release(successCallback, failureCallback)
+Release the wakelock. It's important to do this when you're finished with the wakelock, to avoid unnecessary battery drain.
+
+	window.powerManagement.release(function() {
+		console.log('Wakelock released');
+	}, function() {
+		console.log('Failed to release wakelock');
+	});
+
+### [Android Only] window.powerManagement.setReleaseOnPause(enabled, successCallback, failureCallback)
+By default, the plugin will automatically release a wakelock when your app is paused (e.g. when the screen is turned off, or the user switches to another app). It will reacquire the wakelock upon app resume. If you would prefer to disable this behaviour, you can use this function.
+
+	window.powerManagement.setReleaseOnPause(false, function() {
+		console.log('Set successfully');
+	}, function() {
+		console.log('Failed to set');
+	});
+
+Note that in all the above examples, all callbacks are optional.
+
 License
 =======
 Copyright 2013 Wolfgang Koller
